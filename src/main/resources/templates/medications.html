@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Medications</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h2>Medications</h2>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Dosage</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="medication : ${medications}">
+            <td th:text="${medication.id}"></td>
+            <td th:text="${medication.name}"></td>
+            <td th:text="${medication.dosage}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <h3>Add Medication</h3>
+    <form th:action="@{/medications/add}" method="post">
+        <div class="form-group">
+            <label>Name:</label>
+            <input type="text" class="form-control" name="name" required>
+        </div>
+        <div class="form-group">
+            <label>Dosage:</label>
+            <input type="text" class="form-control" name="dosage" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Add Medication</button>
+    </form>
+    <div th:if="${success}" class="alert alert-success" th:text="${success}"></div>
+</div>
+</body>
+</html>

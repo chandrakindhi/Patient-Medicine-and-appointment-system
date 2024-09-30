@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>User Profile</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+<h1>User Profile</h1>
+<p>Name: <span th:text="${patient.name}"></span></p>
+<p>Email: <span th:text="${patient.email}"></span></p>
+<p>Contact Number: <span th:text="${patient.contactNumber}"></span></p>
+<p>Medical History: <span th:text="${patient.medicalHistory}"></span></p>
+<a href="/appointments">View Appointments</a>
+<a href="/medications">View Medications</a>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Appointments</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h2>Appointments</h2>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Appointment Date</th>
+            <th>Doctor Name</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="appointment : ${appointments}">
+            <td th:text="${appointment.id}"></td>
+            <td th:text="${appointment.appointmentDate}"></td>
+            <td th:text="${appointment.doctorName}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <h3>Book Appointment</h3>
+    <form th:action="@{/appointments/book}" method="post">
+        <div class="form-group">
+            <label>Doctor Name:</label>
+            <input type="text" class="form-control" name="doctorName" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Book Appointment</button>
+    </form>
+    <div th:if="${success}" class="alert alert-success" th:text="${success}"></div>
+</div>
+</body>
+</html>
